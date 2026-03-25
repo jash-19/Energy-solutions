@@ -97,7 +97,39 @@ font-size:14px;
 }
 
 }
+  
+/* LEAD FORM */
+.lead-box{
+max-width:420px;
+margin:auto;
+background:white;
+padding:30px;
+border-radius:15px;
+box-shadow:0 10px 30px rgba(0,0,0,0.1);
+display:flex;
+flex-direction:column;
+gap:15px;
+text-align:center;
+}
 
+.lead-box input{
+padding:12px;
+border-radius:6px;
+border:1px solid #ccc;
+font-size:15px;
+}
+
+.lead-box button{
+background:#25D366;
+color:white;
+font-weight:bold;
+}
+
+.small-text{
+font-size:13px;
+color:#555;
+}
+  
 /* EXPERIENCE STATS */
 .stats{
 display:grid;
@@ -325,7 +357,29 @@ border-radius:50%;
 </div>
 
 </section>
+  
+<section id="lead">
 
+<h2>Get Free Solar Consultation</h2>
+
+<div class="lead-box">
+
+<input type="text" id="name" placeholder="Your Name">
+
+<input type="tel" id="phone" placeholder="Phone Number">
+
+<input type="number" id="bill2" placeholder="Monthly Electricity Bill ₹">
+
+<button onclick="sendWhatsApp()" class="btn">
+<i class="fa-brands fa-whatsapp"></i> Get Free Quote
+</button>
+
+<p class="small-text">⚡ We’ll respond within minutes on WhatsApp</p>
+
+</div>
+
+</section>
+  
 <section>
 <h2>Our Projects</h2>
 
@@ -443,7 +497,27 @@ document.getElementById("result").innerHTML=
 
 document.getElementById("resultBox").style.display="block";
 }
+function sendWhatsApp(){
 
+let name = document.getElementById("name").value;
+let phone = document.getElementById("phone").value;
+let bill = document.getElementById("bill2").value || document.getElementById("bill").value;
+
+if(!name || !phone){
+alert("Please fill name and phone");
+return;
+}
+
+let message = `Hi, I'm ${name}.
+My monthly electricity bill is ₹${bill}.
+I am interested in solar installation.`;
+
+let url = `https://wa.me/919481440700?text=${encodeURIComponent(message)}`;
+
+window.open(url, "_blank");
+
+}
+  
 /* SLIDER */
 let index=0;
 const slides=document.querySelector(".slides");
