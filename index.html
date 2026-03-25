@@ -97,6 +97,27 @@ font-size:14px;
 }
 
 }
+
+/* EXPERIENCE STATS */
+.stats{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+gap:20px;
+text-align:center;
+}
+
+.stat-card{
+background:white;
+padding:30px;
+border-radius:12px;
+box-shadow:0 5px 15px rgba(0,0,0,0.08);
+}
+
+.stat-card h3{
+font-size:32px;
+color:#16a34a;
+margin-bottom:10px;
+}  
 /* SECTION */
 section{padding:60px 20px;max-width:1100px;margin:auto;}
 h2{text-align:center;margin-bottom:40px;}
@@ -318,12 +339,38 @@ border-radius:50%;
 
 </section>
 
+<section id="experience">
+
+<h2>Our Experience</h2>
+
+<div class="stats">
+
+<div class="stat-card">
+<h3 class="counter" data-target="120">0</h3>
+<p>Solar Projects Installed</p>
+</div>
+
+<div class="stat-card">
+<h3 class="counter" data-target="8">0</h3>
+<p>Years in Solar Industry</p>
+</div>
+
+<div class="stat-card">
+<h3 class="counter" data-target="95">0</h3>
+<p>Customer Satisfaction</p>
+</div>
+
+</div>
+
+</section>
+  
 <section id="contact">
 <h2>Contact Us</h2>
 
 <div class="contact">
-<p>📞 +91 9481440700</p>
+<p>📞 +91 7625031033</p>
 <p>📧 yourmail@gmail.com</p>
+<p>Click Whatsapp icon and message us directly</p>
 </div>
 
 </section>
@@ -332,12 +379,50 @@ border-radius:50%;
 <p>© 2026 Green Energy Solutions</p>
 </footer>
 
-<a href="https://wa.me/919481440700" class="whatsapp">
+<a href="https://wa.me/917625031033" class="whatsapp">
 <i class="fa-brands fa-whatsapp"></i>
 </a>
 
 <script>
+  
+/* COUNTER ANIMATION */
 
+const counters = document.querySelectorAll('.counter');
+
+const startCounter = (counter) => {
+let target = +counter.dataset.target;
+let count = 0;
+
+const update = () => {
+let inc = target / 60;
+
+if(count < target){
+count += inc;
+counter.innerText = Math.ceil(count);
+requestAnimationFrame(update);
+}else{
+if(target == 95){
+counter.innerText = target + "%";
+}else{
+counter.innerText = target + "+";
+}
+}
+};
+
+update();
+};
+
+const observer = new IntersectionObserver((entries)=>{
+entries.forEach(entry=>{
+if(entry.isIntersecting){
+startCounter(entry.target);
+observer.unobserve(entry.target);
+}
+});
+});
+
+counters.forEach(counter => observer.observe(counter));
+  
 /* CALCULATOR (UPGRADED) */
 function calculate(){
 let bill=document.getElementById("bill").value;
