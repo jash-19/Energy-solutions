@@ -25,13 +25,10 @@ header{
 background:linear-gradient(90deg,#064e3b,#16a34a);
 color:white;
 text-align:center;
-padding:10px;
+padding:12px;
 position:sticky;
 top:0;
-z-index:1000;
 }
-
-h2{margin-bottom:20px;text-align:center;}
 
 /* HERO */
 .hero{
@@ -54,14 +51,55 @@ color:white;
 background:#22c55e;
 padding:12px 25px;
 color:white;
-text-decoration:none;
-border-radius:6px;
 border:none;
+border-radius:6px;
 cursor:pointer;
 }
+  
+@media(max-width:768px){
 
-/* SECTIONS */
+/* PROCESS FIX */
+.process::before{
+left:10px;
+}
+
+.step{
+align-items:flex-start;
+}
+
+.circle{
+width:30px;
+height:30px;
+font-size:14px;
+}
+
+/* CALCULATOR IMPROVE */
+.calculator-box{
+padding:20px;
+}
+
+.calculator-box input{
+width:100%;
+}
+
+/* HERO TEXT */
+.hero{
+padding:20px;
+}
+
+.hero h1{
+font-size:26px;
+line-height:1.3;
+}
+
+.hero p{
+font-size:14px;
+}
+
+}
+/* SECTION */
 section{padding:60px 20px;max-width:1100px;margin:auto;}
+h2{text-align:center;margin-bottom:40px;}
 
 /* SERVICES */
 .services{
@@ -73,10 +111,13 @@ gap:20px;
 .card{
 background:white;
 padding:25px;
-border-radius:10px;
-box-shadow:0 4px 10px rgba(0,0,0,0.1);
+border-radius:12px;
+box-shadow:0 5px 15px rgba(0,0,0,0.08);
 text-align:center;
+transition:0.3s;
 }
+
+.card:hover{transform:translateY(-5px);}
 
 .card i{
 font-size:40px;
@@ -84,37 +125,77 @@ color:#16a34a;
 margin-bottom:10px;
 }
 
-/* WHY US */
-.why{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
-gap:20px;
-text-align:center;
+/* PROCESS (NEW DESIGN) */
+.process{
+display:flex;
+flex-direction:column;
+gap:25px;
+position:relative;
 }
 
-/* PROCESS */
-.process{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
-gap:20px;
-text-align:center;
+.process::before{
+content:"";
+position:absolute;
+left:20px;
+top:0;
+bottom:0;
+width:3px;
+background:#16a34a;
 }
 
 .step{
+display:flex;
+align-items:center;
+gap:20px;
+}
+
+.circle{
+width:40px;
+height:40px;
+background:#16a34a;
+color:white;
+border-radius:50%;
+display:flex;
+align-items:center;
+justify-content:center;
+font-weight:bold;
+z-index:1;
+}
+
+.step-content{
 background:white;
 padding:20px;
 border-radius:10px;
+box-shadow:0 4px 10px rgba(0,0,0,0.1);
+flex:1;
 }
 
-/* CALCULATOR */
-.calculator{
+/* CALCULATOR (UPGRADED) */
+.calculator-box{
+background:white;
+padding:30px;
+border-radius:15px;
+box-shadow:0 8px 25px rgba(0,0,0,0.1);
 text-align:center;
+max-width:400px;
+margin:auto;
 }
 
-input{
-padding:10px;
-width:250px;
-margin:10px;
+.calculator-box input{
+width:100%;
+padding:12px;
+border-radius:6px;
+border:1px solid #ccc;
+margin:15px 0;
+font-size:16px;
+}
+
+.result-box{
+margin-top:20px;
+padding:15px;
+background:#ecfdf5;
+border-radius:10px;
+display:none;
 }
 
 /* PROJECTS */
@@ -162,56 +243,45 @@ border-radius:50%;
 <section class="hero">
 <div>
 <h1>Power Your Future with Solar</h1>
-<p>Save Money • Go Green • Energy Independence</p>
+<p>Save Money • Clean Energy • Smart Investment</p>
 <a href="#contact" class="btn">Get Free Consultation</a>
 </div>
 </section>
 
 <section>
 <h2>Our Services</h2>
+
 <div class="services">
-
-<div class="card">
-<i class="fa-solid fa-solar-panel"></i>
-<h3>Solar Installation</h3>
-<p>Residential & commercial systems.</p>
-</div>
-
-<div class="card">
-<i class="fa-solid fa-bolt"></i>
-<h3>Energy Consulting</h3>
-<p>Reduce electricity bills smartly.</p>
-</div>
-
-<div class="card">
-<i class="fa-solid fa-screwdriver-wrench"></i>
-<h3>Maintenance</h3>
-<p>Ensure long-term performance.</p>
-</div>
-
-</div>
-</section>
-
-<section>
-<h2>Why Choose Us</h2>
-<div class="why">
-
-<div class="card"><p>25-Year Panel Warranty</p></div>
-<div class="card"><p>Government Subsidy Support</p></div>
-<div class="card"><p>Fast Installation</p></div>
-<div class="card"><p>Local Expert Team</p></div>
-
+<div class="card"><i class="fa-solid fa-solar-panel"></i><h3>Installation</h3></div>
+<div class="card"><i class="fa-solid fa-bolt"></i><h3>Consulting</h3></div>
+<div class="card"><i class="fa-solid fa-screwdriver-wrench"></i><h3>Maintenance</h3></div>
 </div>
 </section>
 
 <section>
 <h2>Our Process</h2>
+
 <div class="process">
 
-<div class="step"><p>1. Site Visit</p></div>
-<div class="step"><p>2. Design & Planning</p></div>
-<div class="step"><p>3. Installation</p></div>
-<div class="step"><p>4. Maintenance</p></div>
+<div class="step">
+<div class="circle">1</div>
+<div class="step-content"><b>Site Visit</b><br>We inspect your location</div>
+</div>
+
+<div class="step">
+<div class="circle">2</div>
+<div class="step-content"><b>Custom Design</b><br>Optimized solar planning</div>
+</div>
+
+<div class="step">
+<div class="circle">3</div>
+<div class="step-content"><b>Installation</b><br>Quick & professional setup</div>
+</div>
+
+<div class="step">
+<div class="circle">4</div>
+<div class="step-content"><b>Monitoring</b><br>Track your savings live</div>
+</div>
 
 </div>
 </section>
@@ -219,17 +289,20 @@ border-radius:50%;
 <section id="calculator">
 <h2>Solar Savings Calculator</h2>
 
-<div class="calculator">
+<div class="calculator-box">
 
-<input type="number" id="bill" placeholder="Enter monthly bill ₹">
+<p>Enter your monthly electricity bill</p>
 
-<br>
+<input type="number" id="bill" placeholder="₹ 2000">
 
-<button onclick="calculate()" class="btn">Calculate Savings</button>
+<button onclick="calculate()" class="btn">Calculate</button>
 
+<div class="result-box" id="resultBox">
 <p id="result"></p>
+</div>
 
 </div>
+
 </section>
 
 <section>
@@ -237,11 +310,9 @@ border-radius:50%;
 
 <div class="slider">
 <div class="slides">
-
 <img src="https://images.unsplash.com/photo-1509395176047-4a66953fd231?w=1200">
 <img src="https://images.unsplash.com/photo-1584270354949-c26b0d5b4a0c?w=1200">
 <img src="https://images.unsplash.com/photo-1592833159055-28f5d4c984c1?w=1200">
-
 </div>
 </div>
 
@@ -267,20 +338,25 @@ border-radius:50%;
 
 <script>
 
-/* CALCULATOR */
+/* CALCULATOR (UPGRADED) */
 function calculate(){
 let bill=document.getElementById("bill").value;
 
 if(!bill){
-alert("Enter bill amount");
+alert("Enter your bill");
 return;
 }
 
 let system=(bill/1000).toFixed(1);
 let savings=(bill*12*0.8).toFixed(0);
+let years=(system*50000 / savings).toFixed(1);
 
-document.getElementById("result").innerText=
-`System: ${system} kW | Yearly Savings: ₹${savings}`;
+document.getElementById("result").innerHTML=
+`⚡ System Size: <b>${system} kW</b><br>
+💰 Yearly Savings: <b>₹${savings}</b><br>
+⏳ Payback Time: <b>${years} years</b>`;
+
+document.getElementById("resultBox").style.display="block";
 }
 
 /* SLIDER */
