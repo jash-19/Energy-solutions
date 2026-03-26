@@ -235,7 +235,32 @@ font-size:40px;
 color:#16a34a;
 margin-bottom:10px;
 }
+#service-details{
+animation:fadeInPage 0.4s ease;
+max-width:900px;
+margin:auto;
+text-align:left;
+}
 
+@keyframes fadeInPage{
+from{
+opacity:0;
+transform:translateY(20px);
+}
+to{
+opacity:1;
+transform:translateY(0);
+}
+}
+
+#service-details h2{
+margin-bottom:15px;
+}
+
+#service-details h3{
+margin-top:20px;
+color:#16a34a;
+}
 /* PROCESS (NEW DESIGN) */
 .process{
 display:flex;
@@ -398,11 +423,32 @@ text-align:center;
 <h2>Our Services</h2>
 
 <div class="services">
-<div class="card"><i class="fa-solid fa-solar-panel"></i><h3>Installation</h3></div>
-<div class="card"><i class="fa-solid fa-bolt"></i><h3>Consulting</h3></div>
-<div class="card"><i class="fa-solid fa-screwdriver-wrench"></i><h3>Maintenance</h3></div>
+
+<div class="card" onclick="openService('installation')">
+<i class="fa-solid fa-solar-panel"></i>
+<h3>Installation</h3>
 </div>
+
+<div class="card" onclick="openService('consulting')">
+<i class="fa-solid fa-bolt"></i>
+<h3>Consulting</h3>
+</div>
+
+<div class="card" onclick="openService('maintenance')">
+<i class="fa-solid fa-screwdriver-wrench"></i>
+<h3>Maintenance</h3>
+</div>
+
+</div>
+   
 </section>
+<section id="service-details" style="display:none;" class="reveal">
+
+<button onclick="goBack()" class="btn">⬅ Back</button>
+
+<div id="service-content" style="margin-top:30px;"></div>
+
+</section>  
 
 <section class="reveal">
 <h2>Our Process</h2>
@@ -639,6 +685,82 @@ el.classList.add("active");
 }
 });
 });
+
+function openService(type){
+
+let content = "";
+
+if(type === "installation"){
+content = `
+<h2>Solar Installation</h2>
+
+<p>We provide high-quality solar panel installation with government-approved systems.</p>
+
+<h3>🌞 Government Schemes</h3>
+<p>Get subsidies under PM Solar Yojana (up to 40% savings).</p>
+
+<h3>🔒 Warranty</h3>
+<p>25 years panel warranty & 5 years service support.</p>
+
+<h3>⚡ Benefits</h3>
+<p>Reduce electricity bill by up to 80%.</p>
+`;
+}
+
+if(type === "consulting"){
+content = `
+<h2>Solar Consulting</h2>
+
+<p>We analyze your electricity usage and suggest the best system.</p>
+
+<h3>💰 Real Savings Example</h3>
+<p>A home with ₹3000 bill reduced it to ₹500/month.</p>
+
+<h3>📊 Custom Planning</h3>
+<p>We design system based on your roof & usage.</p>
+`;
+}
+
+if(type === "maintenance"){
+content = `
+<h2>Solar Maintenance</h2>
+
+<p>Regular maintenance ensures maximum efficiency.</p>
+
+<h3>⚙️ How it Works</h3>
+<p>We clean panels, check wiring & monitor performance.</p>
+
+<h3>📈 Importance</h3>
+<p>Maintenance improves output by 15-20%.</p>
+`;
+}
+
+document.getElementById("service-content").innerHTML = content;
+
+// hide all sections
+document.querySelectorAll("section").forEach(sec=>{
+sec.style.display="none";
+});
+
+// show detail section
+document.getElementById("service-details").style.display="block";
+
+// scroll top
+window.scrollTo(0,0);
+}
+
+function goBack(){
+
+document.getElementById("service-details").style.display="none";
+
+// show only main sections
+document.querySelectorAll("section").forEach(sec=>{
+if(sec.id !== "service-details"){
+sec.style.display="block";
+}
+});
+
+}
   
 /* SLIDER */
 let index=0;
