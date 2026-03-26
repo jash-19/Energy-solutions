@@ -56,6 +56,25 @@ padding:20px;
 .hero h1{font-size:42px;}
 .hero p{margin:15px 0;}
 
+header h2{
+font-family:'Orbitron', sans-serif;
+font-size:20px;
+margin:0;
+opacity:0;
+animation:fadeInHeader 1.5s ease forwards;
+}
+
+@keyframes fadeWord{
+from{
+opacity:0;
+transform:translateY(20px);
+}
+to{
+opacity:1;
+transform:translateY(0);
+}
+}
+  
 .btn{
 background:#22c55e;
 padding:12px 25px;
@@ -341,7 +360,7 @@ text-align:center;
 
 <section class="hero">
 <div>
-<h1>Power Your Future with Solar</h1>
+<h1 id="hero-text"></h1>
 <p>Save Money • Clean Energy • Smart Investment</p>
 <a href="#contact" class="btn">Get Free Consultation</a>
 </div>
@@ -565,6 +584,19 @@ let url = `https://wa.me/917625031033?text=${encodeURIComponent(message)}`;
 window.open(url, "_blank");
 
 }
+  
+const text = "Power Your Future with Solar".split(" ");
+const heroText = document.getElementById("hero-text");
+
+text.forEach((word, index) => {
+let span = document.createElement("span");
+span.textContent = word + " ";
+span.style.opacity = 0;
+span.style.display = "inline-block";
+span.style.animation = `fadeWord 0.6s ease forwards`;
+span.style.animationDelay = `${index * 0.4}s`;
+heroText.appendChild(span);
+});
   
 /* SLIDER */
 let index=0;
