@@ -419,7 +419,7 @@ text-align:center;
 </div>
 </section>
 
-<section class="reveal">
+<section id="services" class="reveal">
 <h2>Our Services</h2>
 
 <div class="services">
@@ -753,11 +753,16 @@ function goBack(){
 
 document.getElementById("service-details").style.display="none";
 
-// show only main sections
+// show all sections again
 document.querySelectorAll("section").forEach(sec=>{
 if(sec.id !== "service-details"){
 sec.style.display="block";
 }
+});
+
+// scroll to services section
+document.getElementById("services").scrollIntoView({
+behavior: "smooth"
 });
 
 }
