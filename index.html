@@ -16,15 +16,23 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
 
 <style>
 
+/* COLOR SYSTEM */
+:root{
+--primary:#0f172a;
+--secondary:#22c55e;
+--accent:#f59e0b;
+--light:#f8fafc;
+}
+
 *{margin:0;padding:0;box-sizing:border-box;font-family:Arial;}
+body{background:var(--light);color:#222;}
 
-body{background:#f4fdf7;color:#222;}
-
+/* HEADER */
 header{
-background:linear-gradient(90deg,#064e3b,#16a34a);
+background:var(--primary);
 color:white;
 text-align:center;
-padding:6px 10px;   /* reduced height */
+padding:8px;
 position:sticky;
 top:0;
 z-index:1000;
@@ -33,29 +41,23 @@ z-index:1000;
 header h2{
 font-family:'Orbitron', sans-serif;
 font-size:20px;
-margin:0;
-}
-  
-@keyframes fadeInHeader{
-from{
 opacity:0;
-transform:translateY(-10px);
+animation:fadeInHeader 1.5s ease forwards;
 }
-to{
-opacity:1;
-transform:translateY(0);
+
+@keyframes fadeInHeader{
+from{opacity:0;transform:translateY(-10px);}
+to{opacity:1;transform:translateY(0);}
 }
-}
-  
+
 /* HERO */
 .hero{
 min-height:85vh;
 background:
-linear-gradient(rgba(0,0,0,0.45),rgba(0,0,0,0.45)),
+linear-gradient(rgba(15,23,42,0.75),rgba(15,23,42,0.75)),
 url("https://images.unsplash.com/photo-1466611653911-95081537e5b7?w=2000");
 background-size:cover;
 background-position:center;
-background-repeat:no-repeat;
 display:flex;
 align-items:center;
 justify-content:center;
@@ -67,27 +69,13 @@ padding:20px;
 .hero h1{font-size:42px;}
 .hero p{margin:15px 0;}
 
-header h2{
-font-family:'Orbitron', sans-serif;
-font-size:20px;
-margin:0;
-opacity:0;
-animation:fadeInHeader 1.5s ease forwards;
+#hero-text span{
+white-space:nowrap;
 }
 
-@keyframes fadeWord{
-from{
-opacity:0;
-transform:translateY(20px);
-}
-to{
-opacity:1;
-transform:translateY(0);
-}
-}
-  
+/* BUTTON */
 .btn{
-background:#22c55e;
+background:linear-gradient(135deg,var(--secondary),var(--accent));
 padding:12px 25px;
 color:white;
 border:none;
@@ -97,122 +85,14 @@ transition:0.3s;
 }
 
 .btn:hover{
-box-shadow:0 0 15px #22c55e, 0 0 40px #22c55e;
 transform:scale(1.05);
 }
-  
-.reveal{
-opacity:0;
-transform:translateY(40px);
-transition:0.6s ease;
-}
 
-.reveal.active{
-opacity:1;
-transform:translateY(0);
-}
-  
-@media(max-width:768px){
-
-/* PROCESS FIX */
-.process::before{
-left:10px;
-}
-
-.step{
-align-items:flex-start;
-}
-
-.circle{
-width:30px;
-height:30px;
-font-size:14px;
-}
-
-/* CALCULATOR IMPROVE */
-.calculator-box{
-padding:20px;
-}
-
-.calculator-box input{
-width:100%;
-}
-
-/* HERO TEXT */
-.hero{
-padding:20px;
-}
-.hero{
-background-attachment:fixed;
-}
-  
-.hero h1{
-font-size:26px;
-line-height:1.4;
-}
-.hero p{
-font-size:14px;
-}
-
-}
-  
-/* LEAD FORM */
-.lead-box{
-max-width:420px;
-margin:auto;
-background:white;
-padding:30px;
-border-radius:15px;
-box-shadow:0 10px 30px rgba(0,0,0,0.1);
-display:flex;
-flex-direction:column;
-gap:15px;
-text-align:center;
-}
-
-.lead-box input{
-padding:12px;
-border-radius:6px;
-border:1px solid #ccc;
-font-size:15px;
-}
-
-.lead-box button{
-background:#25D366;
-color:white;
-font-weight:bold;
-}
-
-.small-text{
-font-size:13px;
-color:#555;
-}
-  
-/* EXPERIENCE STATS */
-.stats{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
-gap:20px;
-text-align:center;
-}
-
-.stat-card{
-background:white;
-padding:30px;
-border-radius:12px;
-box-shadow:0 5px 15px rgba(0,0,0,0.08);
-}
-
-.stat-card h3{
-font-size:32px;
-color:#16a34a;
-margin-bottom:10px;
-}  
-/* SECTION */
+/* SECTIONS */
 section{padding:60px 20px;max-width:1100px;margin:auto;}
-h2{text-align:center;margin-bottom:40px;}
+h2{text-align:center;margin-bottom:40px;color:var(--primary);}
 
-/* SERVICES */ 
+/* SERVICES */
 .services{
 display:grid;
 grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
@@ -225,88 +105,25 @@ padding:25px;
 border-radius:12px;
 box-shadow:0 5px 15px rgba(0,0,0,0.08);
 text-align:center;
-transition:0.3s;
+cursor:pointer;
 }
-
-.card:hover{transform:translateY(-5px);}
 
 .card i{
 font-size:40px;
-color:#16a34a;
+color:var(--secondary);
 margin-bottom:10px;
 }
-#service-details{
-animation:fadeInPage 0.4s ease;
-max-width:900px;
-margin:auto;
-text-align:left;
-}
 
-@keyframes fadeInPage{
-from{
-opacity:0;
-transform:translateY(20px);
-}
-to{
-opacity:1;
-transform:translateY(0);
-}
-}
-
-#service-details h2{
-margin-bottom:15px;
-}
-
-#service-details h3{
-margin-top:20px;
-color:#16a34a;
-}
-/* PROCESS (NEW DESIGN) */
-.process{
-display:flex;
-flex-direction:column;
-gap:25px;
-position:relative;
-}
-
-.process::before{
-content:"";
-position:absolute;
-left:20px;
-top:0;
-bottom:0;
-width:3px;
-background:#16a34a;
-}
-
-.step{
-display:flex;
-align-items:center;
-gap:20px;
-}
-
+/* PROCESS */
+.process{display:flex;flex-direction:column;gap:25px;}
+.step{display:flex;gap:20px;}
 .circle{
-width:40px;
-height:40px;
-background:#16a34a;
-color:white;
-border-radius:50%;
-display:flex;
-align-items:center;
-justify-content:center;
-font-weight:bold;
-z-index:1;
+width:40px;height:40px;background:var(--secondary);
+color:white;border-radius:50%;display:flex;
+align-items:center;justify-content:center;
 }
 
-.step-content{
-background:white;
-padding:20px;
-border-radius:10px;
-box-shadow:0 4px 10px rgba(0,0,0,0.1);
-flex:1;
-}
-
-/* CALCULATOR (UPGRADED) */
+/* CALCULATOR */
 .calculator-box{
 background:white;
 padding:30px;
@@ -323,7 +140,6 @@ padding:12px;
 border-radius:6px;
 border:1px solid #ccc;
 margin:15px 0;
-font-size:16px;
 }
 
 .result-box{
@@ -332,34 +148,27 @@ padding:18px;
 background:linear-gradient(135deg,#dcfce7,#bbf7d0);
 border-radius:12px;
 display:none;
-font-size:15px;
-line-height:1.6;
 }
 
-/* PROJECTS */
-.slider{
-overflow:hidden;
+/* FAQ */
+.faq-item{
+background:white;
+margin-bottom:15px;
+padding:20px;
 border-radius:10px;
+box-shadow:0 4px 10px rgba(0,0,0,0.08);
+cursor:pointer;
 }
 
-.slides{
-display:flex;
-width:100%;
+.faq-item p{
+display:none;
+margin-top:10px;
+color:#555;
 }
-
-.slides img{
-width:100%;
-flex-shrink:0;
-aspect-ratio:16/9;
-object-fit:cover;
-}
-
-/* CONTACT */
-.contact{text-align:center;}
 
 /* FOOTER */
 footer{
-background:#064e3b;
+background:var(--primary);
 color:white;
 text-align:center;
 padding:20px;
@@ -374,32 +183,6 @@ background:#25D366;
 color:white;
 padding:18px;
 border-radius:50%;
-}
-
-/* MOBILE */
-@media(max-width:768px){
-  
-.hero{
-min-height:75vh;
-background-size:cover;
-background-position:center top;
-}
-
-header{
-padding:8px;
-}
-
-header h2{
-font-size:18px;
-line-height:1.2;
-text-align:center;
-}
-
-}
-  
-@media(max-width:768px){
-.hero h1{font-size:28px;}
-.slides img{height:250px;}
 }
 
 </style>
@@ -419,155 +202,54 @@ text-align:center;
 </div>
 </section>
 
-<section id="services" class="reveal">
+<section>
 <h2>Our Services</h2>
-
 <div class="services">
-
-<div class="card" onclick="openService('installation')">
-<i class="fa-solid fa-solar-panel"></i>
-<h3>Installation</h3>
-</div>
-
-<div class="card" onclick="openService('consulting')">
-<i class="fa-solid fa-bolt"></i>
-<h3>Consulting</h3>
-</div>
-
-<div class="card" onclick="openService('maintenance')">
-<i class="fa-solid fa-screwdriver-wrench"></i>
-<h3>Maintenance</h3>
-</div>
-
-</div>
-   
-</section>
-<section id="service-details" style="display:none;" class="reveal">
-
-<button onclick="goBack()" class="btn">⬅ Back</button>
-
-<div id="service-content" style="margin-top:30px;"></div>
-
-</section>  
-
-<section class="reveal">
-<h2>Our Process</h2>
-
-<div class="process">
-
-<div class="step">
-<div class="circle">1</div>
-<div class="step-content"><b>Site Visit</b><br>We inspect your location</div>
-</div>
-
-<div class="step">
-<div class="circle">2</div>
-<div class="step-content"><b>Custom Design</b><br>Optimized solar planning</div>
-</div>
-
-<div class="step">
-<div class="circle">3</div>
-<div class="step-content"><b>Installation</b><br>Quick & professional setup</div>
-</div>
-
-<div class="step">
-<div class="circle">4</div>
-<div class="step-content"><b>Monitoring</b><br>Track your savings live</div>
-</div>
-
+<div class="card"><i class="fa-solid fa-solar-panel"></i><h3>Installation</h3></div>
+<div class="card"><i class="fa-solid fa-bolt"></i><h3>Consulting</h3></div>
+<div class="card"><i class="fa-solid fa-screwdriver-wrench"></i><h3>Maintenance</h3></div>
 </div>
 </section>
 
-<section id="calculator" class="reveal">
+<section>
 <h2>Solar Savings Calculator</h2>
 
 <div class="calculator-box">
-
 <p>Enter your monthly electricity bill</p>
-
 <input type="number" id="bill" placeholder="₹ 2000">
-
-<button onclick="calculate()" class="btn">Calculate</button>
 
 <div class="result-box" id="resultBox">
 <p id="result"></p>
 </div>
+</div>
+</section>
 
+<section>
+<h2>Frequently Asked Questions</h2>
+
+<div class="faq">
+<div class="faq-item">
+<h3 onclick="toggleFAQ(this)">How much does solar cost?</h3>
+<p>Most homes recover investment in 3–5 years.</p>
 </div>
 
-</section>
-  
-<section id="lead" class="reveal">
-
-<h2>Get Free Solar Consultation</h2>
-
-<div class="lead-box">
-
-<input type="text" id="name" placeholder="Your Name">
-
-<input type="tel" id="phone" placeholder="Phone Number">
-
-<input type="number" id="bill2" placeholder="Monthly Electricity Bill ₹">
-
-<button onclick="sendWhatsApp()" class="btn">
-<i class="fa-brands fa-whatsapp"></i> Get Free Quote
-</button>
-
-<p class="small-text">⚡ We’ll respond within minutes on WhatsApp</p>
-
+<div class="faq-item">
+<h3 onclick="toggleFAQ(this)">Is subsidy available?</h3>
+<p>Yes, up to 40% under government schemes.</p>
 </div>
 
-</section>
-  
-<section class="reveal">
-<h2>Our Projects</h2>
-
-<div class="slider">
-<div class="slides">
-<img src="images/download (1).jpg">
-<img src="images/download (2).jpg">
-<img src="images/download (3).jpg">
-<img src="images/download (4).jpg">  
-<img src="images/images.jpg">  
+<div class="faq-item">
+<h3 onclick="toggleFAQ(this)">Lifespan?</h3>
+<p>25+ years with low maintenance.</p>
 </div>
 </div>
 
 </section>
-  
-<section id="experience" class="reveal">
 
-<h2>Our Experience</h2>
-
-<div class="stats">
-
-<div class="stat-card">
-<h3 class="counter" data-target="15">0</h3>
-<p>Solar Projects Installed</p>
-</div>
-
-<div class="stat-card">
-<h3 class="counter" data-target="2">0</h3>
-<p>Years in Solar Industry</p>
-</div>
-
-<div class="stat-card">
-<h3 class="counter" data-target="95">0</h3>
-<p>Customer Satisfaction</p>
-</div>
-
-</div>
-
-</section>
-  
-<section id="contact" class="reveal">
+<section id="contact">
 <h2>Contact Us</h2>
-
-<div class="contact">
 <p>📞 +91 7625031033</p>
 <p>📧 yourmail@gmail.com</p>
-<p>Click Whatsapp icon and message us directly</p>
-</div>
-
 </section>
 
 <footer>
@@ -579,86 +261,8 @@ text-align:center;
 </a>
 
 <script>
-  
-/* COUNTER ANIMATION */
 
-const counters = document.querySelectorAll('.counter');
-
-const startCounter = (counter) => {
-let target = +counter.dataset.target;
-let count = 0;
-
-const update = () => {
-let inc = target / 60;
-
-if(count < target){
-count += inc;
-counter.innerText = Math.ceil(count);
-requestAnimationFrame(update);
-}else{
-if(target == 95){
-counter.innerText = target + "%";
-}else{
-counter.innerText = target + "+";
-}
-}
-};
-
-update();
-};
-
-const observer = new IntersectionObserver((entries)=>{
-entries.forEach(entry=>{
-if(entry.isIntersecting){
-startCounter(entry.target);
-observer.unobserve(entry.target);
-}
-});
-});
-
-counters.forEach(counter => observer.observe(counter));
-  
-/* CALCULATOR (UPGRADED) */
-function calculate(){
-let bill=document.getElementById("bill").value;
-
-if(!bill){
-alert("Enter your bill");
-return;
-}
-
-let system=(bill/1000).toFixed(1);
-let savings=(bill*12*0.8).toFixed(0);
-let years=(system*50000 / savings).toFixed(1);
-
-document.getElementById("result").innerHTML=
-`⚡ System Size: <b>${system} kW</b><br>
-💰 Yearly Savings: <b>₹${savings}</b><br>
-⏳ Payback Time: <b>${years} years</b>`;
-
-document.getElementById("resultBox").style.display="block";
-}
-function sendWhatsApp(){
-
-let name = document.getElementById("name").value;
-let phone = document.getElementById("phone").value;
-let bill = document.getElementById("bill2").value || document.getElementById("bill").value;
-
-if(!name || !phone){
-alert("Please fill name and phone");
-return;
-}
-
-let message = `Hi, I'm ${name}.
-My monthly electricity bill is ₹${bill}.
-I am interested in solar installation.`;
-
-let url = `https://wa.me/917625031033?text=${encodeURIComponent(message)}`;
-
-window.open(url, "_blank");
-
-}
-  
+/* HERO TEXT ANIMATION */
 const text = "Power Your Future with Solar".split(" ");
 const heroText = document.getElementById("hero-text");
 
@@ -667,115 +271,42 @@ let span = document.createElement("span");
 span.textContent = word;
 span.style.opacity = 0;
 span.style.display = "inline-block";
-span.style.marginRight = "10px";   // ✅ spacing fix
+span.style.marginRight = "10px";
 span.style.animation = `fadeWord 0.6s ease forwards`;
 span.style.animationDelay = `${index * 0.4}s`;
 heroText.appendChild(span);
 });
-  
-const reveals = document.querySelectorAll(".reveal");
 
-window.addEventListener("scroll", ()=>{
-reveals.forEach(el=>{
-let windowHeight = window.innerHeight;
-let elementTop = el.getBoundingClientRect().top;
+/* CALCULATOR AUTO */
+const billInput = document.getElementById("bill");
 
-if(elementTop < windowHeight - 100){
-el.classList.add("active");
-}
-});
-});
+billInput.addEventListener("input", calculate);
 
-function openService(type){
+function calculate(){
+let bill = billInput.value;
 
-let content = "";
-
-if(type === "installation"){
-content = `
-<h2>Solar Installation</h2>
-
-<p>We provide high-quality solar panel installation with government-approved systems.</p>
-
-<h3>🌞 Government Schemes</h3>
-<p>Get subsidies under PM Solar Yojana (up to 40% savings).</p>
-
-<h3>🔒 Warranty</h3>
-<p>25 years panel warranty & 5 years service support.</p>
-
-<h3>⚡ Benefits</h3>
-<p>Reduce electricity bill by up to 80%.</p>
-`;
+if(!bill){
+document.getElementById("resultBox").style.display="none";
+return;
 }
 
-if(type === "consulting"){
-content = `
-<h2>Solar Consulting</h2>
+let system = (bill/1000).toFixed(1);
+let savings = (bill*12*0.8).toFixed(0);
+let years = (system*50000 / savings).toFixed(1);
 
-<p>We analyze your electricity usage and suggest the best system.</p>
+document.getElementById("result").innerHTML=
+`⚡ System Size: ${system} kW<br>
+💰 Yearly Savings: ₹${savings}<br>
+⏳ Payback: ${years} years`;
 
-<h3>💰 Real Savings Example</h3>
-<p>A home with ₹3000 bill reduced it to ₹500/month.</p>
-
-<h3>📊 Custom Planning</h3>
-<p>We design system based on your roof & usage.</p>
-`;
+document.getElementById("resultBox").style.display="block";
 }
 
-if(type === "maintenance"){
-content = `
-<h2>Solar Maintenance</h2>
-
-<p>Regular maintenance ensures maximum efficiency.</p>
-
-<h3>⚙️ How it Works</h3>
-<p>We clean panels, check wiring & monitor performance.</p>
-
-<h3>📈 Importance</h3>
-<p>Maintenance improves output by 15-20%.</p>
-`;
+/* FAQ */
+function toggleFAQ(el){
+let p = el.nextElementSibling;
+p.style.display = (p.style.display === "block") ? "none" : "block";
 }
-
-document.getElementById("service-content").innerHTML = content;
-
-// hide all sections
-document.querySelectorAll("section").forEach(sec=>{
-sec.style.display="none";
-});
-
-// show detail section
-document.getElementById("service-details").style.display="block";
-
-
-}
-
-function goBack(){
-
-document.getElementById("service-details").style.display="none";
-
-// show all sections again
-document.querySelectorAll("section").forEach(sec=>{
-if(sec.id !== "service-details"){
-sec.style.display="block";
-}
-});
-
-// scroll to services section
-document.getElementById("services").scrollIntoView({
-behavior: "smooth"
-});
-
-}
-  
-/* SLIDER */
-let index=0;
-const slides=document.querySelector(".slides");
-const images=document.querySelectorAll(".slides img");
-
-setInterval(()=>{
-index++;
-if(index>=images.length) index=0;
-slides.style.transform=`translateX(-${index*100}%)`;
-},4000);
 
 </script>
 
