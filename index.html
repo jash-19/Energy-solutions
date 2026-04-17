@@ -355,7 +355,49 @@ flex-shrink:0;
 aspect-ratio:16/9;
 object-fit:cover;
 }
+  
+.faq-container{
+max-width:800px;
+margin:auto;
+display:flex;
+flex-direction:column;
+gap:15px;
+}
 
+.faq{
+background:white;
+border-radius:10px;
+box-shadow:0 4px 10px rgba(0,0,0,0.08);
+overflow:hidden;
+}
+
+.question{
+padding:18px;
+font-weight:600;
+cursor:pointer;
+display:flex;
+justify-content:space-between;
+align-items:center;
+}
+
+.answer{
+padding:0 18px;
+max-height:0;
+overflow:hidden;
+transition:0.3s ease;
+color:#444;
+line-height:1.6;
+}
+
+.faq.active .answer{
+padding:18px;
+max-height:200px;
+}
+
+.question span{
+font-size:20px;
+}
+  
 /* CONTACT */
 .contact{text-align:center;}
 
@@ -570,6 +612,64 @@ letter-spacing:1px;
 
 </div>
 
+</section>
+  
+<section id="faq" class="reveal">
+<h2>Frequently Asked Questions</h2>
+
+<div class="faq-container">
+
+<div class="faq">
+<div class="question">How much does a solar panel system cost? <span>+</span></div>
+<div class="answer">
+Solar system cost depends on your electricity usage and roof size.  
+For most homes in India, systems range between ₹1.5L to ₹5L.  
+Government subsidies can reduce the cost by up to 40%.  
+We provide customized quotes after site inspection.
+</div>
+</div>
+
+<div class="faq">
+<div class="question">How much can I save with solar? <span>+</span></div>
+<div class="answer">
+You can save up to 70–90% on your electricity bills.  
+Savings depend on system size and sunlight availability.  
+Most customers recover their investment in 3–5 years.  
+After that, electricity is almost free for 20+ years.
+</div>
+</div>
+
+<div class="faq">
+<div class="question">What maintenance is required? <span>+</span></div>
+<div class="answer">
+Solar panels require very low maintenance.  
+Cleaning panels once every 15–20 days is enough.  
+We also provide annual maintenance services.  
+Regular checks ensure maximum efficiency.
+</div>
+</div>
+
+<div class="faq">
+<div class="question">What happens during cloudy days? <span>+</span></div>
+<div class="answer">
+Solar panels still generate electricity on cloudy days.  
+However, output may reduce slightly.  
+Grid connection or battery backup ensures no power issues.  
+Your system is designed to handle such conditions.
+</div>
+</div>
+
+<div class="faq">
+<div class="question">Is my roof suitable for solar? <span>+</span></div>
+<div class="answer">
+Most rooftops are suitable for solar installation.  
+We check direction, shadow, and space during inspection.  
+South-facing roofs give best results, but others also work well.  
+We design the system for maximum efficiency.
+</div>
+</div>
+
+</div>
 </section>
   
 <section id="contact" class="reveal">
@@ -789,7 +889,14 @@ index++;
 if(index>=images.length) index=0;
 slides.style.transform=`translateX(-${index*100}%)`;
 },4000);
+  
+const faqs = document.querySelectorAll(".faq");
 
+faqs.forEach(faq => {
+faq.querySelector(".question").addEventListener("click", () => {
+faq.classList.toggle("active");
+});
+});
 </script>
 
 </body>
