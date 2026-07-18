@@ -742,25 +742,32 @@ observer.unobserve(entry.target);
 counters.forEach(counter => observer.observe(counter));
   
 /* CALCULATOR (UPGRADED) */
-function calculate(){
-let bill=document.getElementById("bill").value;
+function calculate() {
+    let bill = document.getElementById("bill").value;
 
-if(!bill){
-alert("Enter your bill");
-return;
+    if (!bill) {
+        alert("Enter your bill");
+        return;
+    }
+
+    let system = (bill / 1000).toFixed(1);
+
+    let savings = (bill * 12 * 0.8).toFixed(0);
+
+    let estimatedCost = (system * 50000).toFixed(0);
+
+    let years = (estimatedCost / savings).toFixed(1);
+
+    document.getElementById("result").innerHTML = `
+    ⚡ <b>Recommended System:</b> ${system} kW<br>
+    💵 <b>Estimated Total Cost:</b> ₹${Number(estimatedCost).toLocaleString('en-IN')}<br>
+    💰 <b>Yearly Savings:</b> ₹${Number(savings).toLocaleString('en-IN')}<br>
+    ⏳ <b>Payback Time:</b> ${years} years
+    `;
+
+    document.getElementById("resultBox").style.display = "block";
 }
 
-let system=(bill/1000).toFixed(1);
-let savings=(bill*12*0.8).toFixed(0);
-let years=(system*50000 / savings).toFixed(1);
-
-document.getElementById("result").innerHTML=
-`⚡ System Size: <b>${system} kW</b><br>
-💰 Yearly Savings: <b>₹${savings}</b><br>
-⏳ Payback Time: <b>${years} years</b>`;
-
-document.getElementById("resultBox").style.display="block";
-}
 function sendWhatsApp(){
 
 let name = document.getElementById("name").value;
