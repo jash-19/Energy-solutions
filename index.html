@@ -167,6 +167,16 @@ font-size:14px;
 }
 
 }
+.contact a {
+    color: inherit;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s;
+}
+
+.contact a:hover {
+    color: #f4b400;   /* Gold on hover */
+}
   
 /* LEAD FORM */
 .lead-box{
@@ -547,9 +557,6 @@ letter-spacing:1px;
 <h2>Solar Savings Calculator</h2>
 
 <div class="calculator-box">
-
-    <p>Enter your Monthly Electricity Bill or Monthly Units</p>
-
     <input
         type="number"
         id="bill"
@@ -561,7 +568,7 @@ letter-spacing:1px;
     <input
         type="number"
         id="units"
-        placeholder="Monthly Units Consumed (More Accurate)"
+        placeholder="Monthly Units Consumed"
     >
 
     <button onclick="calculate()" class="btn">Calculate</button>
@@ -695,14 +702,15 @@ We design the system for maximum efficiency.
 
 </div>
 </section>
-  
-<section id="contact" class="reveal">
+ <section id="contact" class="reveal">
 <h2>Contact Us</h2>
 
 <div class="contact">
-<p>📞 +91 7625031033</p>
-<p>📧 connect.voltara@gamil.com</p>
-<p>Click Whatsapp icon and message us directly</p>
+    <p>📞 <a href="tel:+917625031033">+91 7625031033</a></p>
+
+    <p>📧 <a href="mailto:connect.voltara@gmail.com">connect.voltara@gmail.com</a></p>
+
+    <p>Click the WhatsApp icon and message us directly.</p>
 </div>
 
 </section>
