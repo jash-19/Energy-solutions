@@ -548,14 +548,28 @@ letter-spacing:1px;
 
 <div class="calculator-box">
 
-<p>Enter your monthly electricity bill</p>
+    <p>Enter your Monthly Electricity Bill or Monthly Units</p>
 
-<input type="number" id="bill" placeholder="₹ 2000">
+    <input
+        type="number"
+        id="bill"
+        placeholder="Monthly Bill (₹)"
+    >
 
-<button onclick="calculate()" class="btn">Calculate</button>
+    <p style="margin:12px 0;font-weight:bold;">OR</p>
 
-<div class="result-box" id="resultBox">
-<p id="result"></p>
+    <input
+        type="number"
+        id="units"
+        placeholder="Monthly Units Consumed (More Accurate)"
+    >
+
+    <button onclick="calculate()" class="btn">Calculate</button>
+
+    <div class="result-box" id="resultBox">
+        <p id="result"></p>
+    </div>
+
 </div>
 
 </div>
@@ -743,33 +757,41 @@ counters.forEach(counter => observer.observe(counter));
   
 /* CALCULATOR (UPDATED) */
 function calculate() {
-    let bill = document.getElementById("bill").value;
 
-    if (!bill) {
-        alert("Enter your monthly electricity bill");
+    let bill = Number(document.getElementById("bill").value);
+    let units = Number(document.getElementById("units").value);
+
+    // Check if at least one field is filled
+    if (!bill && !units) {
+        alert("Please enter either your monthly electricity bill or monthly units.");
         return;
     }
 
-    // Approximate system sizing
-    let system = (bill / 1000).toFixed(1);
+    // If units are not entered, estimate from bill
+    if (!units) {
+        units = bill / 8.5;   // Approximate ₹8.5 per unit
+    }
 
-    // Approximate yearly savings (80% of yearly bill)
-    let savings = (bill * 12 * 0.8).toFixed(0);
+    // Recommended system size
+    let system = (units / 120).toFixed(1);
 
-    // Average generation (5 units per kW per day)
+    // Solar generation
     let dailyUnits = (system * 5).toFixed(1);
+    let monthlyGeneration = (dailyUnits * 30).toFixed(0);
 
-    let monthlyUnits = (dailyUnits * 30).toFixed(0);
+    // Estimated yearly savings
+    let yearlySavings = ((monthlyGeneration * 12) * 8.5 * 0.8).toFixed(0);
 
+    // Estimated payback
     let estimatedCost = system * 50000;
-    let years = (estimatedCost / savings).toFixed(1);
+    let payback = (estimatedCost / yearlySavings).toFixed(1);
 
     document.getElementById("result").innerHTML = `
-    ⚡ <b>Recommended System:</b> ${system} kW<br>
-    ☀️ <b>Avg. Units Produced / Day:</b> ${dailyUnits} Units<br>
-    📅 <b>Avg. Units Produced / Month:</b> ${monthlyUnits} Units<br>
-    💰 <b>Estimated Yearly Savings:</b> ₹${Number(savings).toLocaleString('en-IN')}<br>
-    ⏳ <b>Estimated Payback:</b> ${years} Years
+        ⚡ <b>Recommended System:</b> ${system} kW<br>
+        ☀️ <b>Avg. Units Produced / Day:</b> ${dailyUnits} Units<br>
+        📅 <b>Avg. Units Produced / Month:</b> ${monthlyGeneration} Units<br>
+        💰 <b>Estimated Yearly Savings:</b> ₹${Number(yearlySavings).toLocaleString('en-IN')}<br>
+        ⏳ <b>Estimated Payback:</b> ${payback} Years
     `;
 
     document.getElementById("resultBox").style.display = "block";
