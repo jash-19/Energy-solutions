@@ -741,33 +741,39 @@ observer.unobserve(entry.target);
 
 counters.forEach(counter => observer.observe(counter));
   
-/* CALCULATOR (UPGRADED) */
+/* CALCULATOR (UPDATED) */
 function calculate() {
     let bill = document.getElementById("bill").value;
 
     if (!bill) {
-        alert("Enter your bill");
+        alert("Enter your monthly electricity bill");
         return;
     }
 
+    // Approximate system sizing
     let system = (bill / 1000).toFixed(1);
 
+    // Approximate yearly savings (80% of yearly bill)
     let savings = (bill * 12 * 0.8).toFixed(0);
 
-    let estimatedCost = (system * 50000).toFixed(0);
+    // Average generation (5 units per kW per day)
+    let dailyUnits = (system * 5).toFixed(1);
 
+    let monthlyUnits = (dailyUnits * 30).toFixed(0);
+
+    let estimatedCost = system * 50000;
     let years = (estimatedCost / savings).toFixed(1);
 
     document.getElementById("result").innerHTML = `
     ⚡ <b>Recommended System:</b> ${system} kW<br>
-    💵 <b>Estimated Total Cost:</b> ₹${Number(estimatedCost).toLocaleString('en-IN')}<br>
-    💰 <b>Yearly Savings:</b> ₹${Number(savings).toLocaleString('en-IN')}<br>
-    ⏳ <b>Payback Time:</b> ${years} years
+    ☀️ <b>Avg. Units Produced / Day:</b> ${dailyUnits} Units<br>
+    📅 <b>Avg. Units Produced / Month:</b> ${monthlyUnits} Units<br>
+    💰 <b>Estimated Yearly Savings:</b> ₹${Number(savings).toLocaleString('en-IN')}<br>
+    ⏳ <b>Estimated Payback:</b> ${years} Years
     `;
 
     document.getElementById("resultBox").style.display = "block";
 }
-
 function sendWhatsApp(){
 
 let name = document.getElementById("name").value;
